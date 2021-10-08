@@ -1,0 +1,34 @@
+package httpapi.authz
+
+default allow = false
+
+# bob is alice's manager, and betty is charlie's.
+subordinates = {"alice": [], "charlie": [], "bob": ["alice"], "betty": ["charlie"]}
+
+hr = [
+  "betty",
+]
+
+default allow = false
+
+# Allow users to get their own info.
+allow {
+  some username
+  input.method == "GET"
+  input.path = ["person", username]
+  input.user == username
+}
+
+# Allow managers to get their subordinates' info.
+allow {
+  some username
+  input.method == "GET"
+  input.path = ["person", username]
+  subordinates[input.user][_] == username
+}
+
+allow {
+  input.method == "GET"
+  input.path = [ "person", _ ]
+  input.user == hr[_]
+}

@@ -12,7 +12,7 @@ groups := g {
   r = token[i]["cognito:groups"]
 }
 
-id_admin {
+is_admin {
   some i
   groups[i] == "Admins"
 }

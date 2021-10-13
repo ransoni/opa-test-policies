@@ -7,14 +7,14 @@ token := t {
     t := io.jwt.decode(input.api_token)
 }
 
-groups := g {
+roles := r {
   some i
   r = token[i]["cognito:groups"]
 }
 
 is_admin {
   some i
-  groups[i] == "Admins"
+  roles[i] == "Admins"
 }
 
 allow {

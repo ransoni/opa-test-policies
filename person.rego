@@ -9,7 +9,7 @@ token := t {
 
 groups := g {
   some i
-  r = token[i].cognito:groups
+  r = token[i]["cognito:groups"]
 }
 
 id_admin {
@@ -30,8 +30,6 @@ subordinates = {"alice": [], "charlie": [], "bob": ["alice"], "betty": ["charlie
 hr = [
   "betty",
 ]
-
-default allow = false
 
 # Allow users to get their own info.
 allow {

@@ -17,7 +17,7 @@ is_admin {
   roles[i] == "Admins"
 }
 
-alloe {
+allow {
   input.method == "GET"
   input.path = ["persons"]
 }

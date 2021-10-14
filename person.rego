@@ -17,6 +17,11 @@ is_admin {
   roles[i] == "Admins"
 }
 
+alloe {
+  input.method == "GET"
+  input.path = ["persons"]
+}
+
 allow {
   some username
   input.method == "GET"

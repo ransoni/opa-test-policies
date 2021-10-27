@@ -33,12 +33,12 @@ allow {
 #   is_admin
 # }
 
-# allow {
-#   some username
-#   input.method == "PATCH"
-#   input.path == ["api", "persons", username]
-#   is_admin
-# }
+allow {
+  some username
+  input.method == "PATCH"
+  input.path == ["api", "persons", username]
+  is_admin
+}
 
 # allow {
 #   input.method == "GET"

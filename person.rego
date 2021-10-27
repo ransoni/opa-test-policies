@@ -24,13 +24,13 @@ is_operator {
 
 allow {
   input.method == "GET"
-  input.path = ["api", "persons"]
+#  input.path = ["api", "persons"]
 }
 
 allow {
   some user
   input.method == "GET"
-  input.path = ["api", "person", user]
+  input.path = ["api", "persons", user]
   is_admin
 }
 

@@ -17,15 +17,15 @@ is_admin {
   roles[i] == "Admins"
 }
 
-# is_operator {
-#   some i
-#   roles[i] == "Operators"
-# }
+is_operator {
+  some i
+  roles[i] == "Operators"
+}
 
 allow {
   input.method == "GET"
   input.path = ["persons"]
-#  is_admin
+  is_operator
 }
 
 allow {

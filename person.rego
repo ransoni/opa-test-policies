@@ -26,6 +26,12 @@ allow {
   input.method == "GET"
 }
 
+allow {
+  input.method == "PATCH"
+  input.path == ["api", "persons"]
+  is_admin
+}
+
 # allow {
 #   some user
 #   input.method == "GET"

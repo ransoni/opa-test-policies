@@ -30,7 +30,7 @@ allow {
 allow {
   some user
   input.method == "GET"
-  input.path = ["api", "persons", user]
+  input.path = ["api", "person", user]
   is_admin
 }
 

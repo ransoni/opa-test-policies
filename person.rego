@@ -17,33 +17,14 @@ is_admin {
   roles[i] == "Admins"
 }
 
-is_operator {
-  some i
-  roles[i] == "Operators"
-}
+# is_operator {
+#   some i
+#   roles[i] == "Operators"
+# }
 
 allow {
   input.method == "GET"
   input.path = ["persons"]
-  is_admin
-}
-
-allow {
-  input.method == "GET"
-  input.path == ["personslist"]
-}
-
-allow {
-  some id
-  input.method == "PATCH"
-  input.path == ["persons", id]
-  is_admin
-}
-
-allow {
-  some id
-  input.method == "DELETE"
-  input.path == ["persons", id]
   is_admin
 }
 
@@ -54,31 +35,21 @@ allow {
   is_admin
 }
 
-# bob is alice's manager, and betty is charlie's.
-subordinates = {"alice": [], "charlie": [], "bob": ["alice"], "betty": ["charlie"]}
+# allow {
+#   input.method == "GET"
+#   input.path == ["personslist"]
+# }
 
-hr = [
-  "betty",
-]
+# allow {
+#   some username
+#   input.method == "PATCH"
+#   input.path == ["persons", username]
+#   is_admin
+# }
 
-# Allow users to get their own info.
-allow {
-  some username
-  input.method == "GET"
-  input.path = ["person", username]
-  input.user == username
-}
-
-# Allow managers to get their subordinates' info.
-allow {
-  some username
-  input.method == "GET"
-  input.path = ["person", username]
-  subordinates[input.user][_] == username
-}
-
-allow {
-  input.method == "GET"
-  input.path = [ "person", _ ]
-  input.user == hr[_]
-}
+# allow {
+#   some username
+#   input.method == "DELETE"
+#   input.path == ["persons", username]
+#   is_admin
+# }

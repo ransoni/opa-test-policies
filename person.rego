@@ -25,33 +25,26 @@ is_operator {
 allow {
   input.method == "GET"
   input.path = ["api", "persons"]
+}
+
+allow {
+  some user
+  input.method == "GET"
+  input.path = ["api", "persons", user]
   is_admin
 }
 
 allow {
-  input.method == "GET"
-  input.path == ["api", "personslist"]
-  is_operator
+  some username
+  input.method == "PATCH"
+  input.path == ["api", "persons", username]
+  is_admin
 }
 
 # allow {
 #   input.method == "GET"
 #   input.path = ["persons"]
 #   is_operator
-# }
-
-allow {
-  some username
-  input.method == "GET"
-  input.path = ["persons", username]
-  is_admin
-}
-
-# allow {
-#   some username
-#   input.method == "PATCH"
-#   input.path == ["persons", username]
-#   is_admin
 # }
 
 # allow {

@@ -24,13 +24,12 @@ is_operator {
 
 allow {
   input.method == "GET"
-  input.path = ["persons"]
-  is_operator
+  input.path = ["api", "persons"]
 }
 
 allow {
   input.method == "GET"
-  input.path == ["personslist"]
+  input.path == ["api", "personslist"]
 }
 
 # allow {

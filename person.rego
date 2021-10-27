@@ -34,6 +34,13 @@ allow {
 }
 
 allow {
+  input.method == "PATCH"
+  input.path[1] == "persons"
+  input.path[2] != null
+  is_operator
+}
+
+allow {
   input.method == "DELETE"
   input.path[1] == "persons"
   input.path[2] != null

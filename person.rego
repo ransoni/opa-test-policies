@@ -30,6 +30,7 @@ allow {
 allow {
   input.method == "GET"
   input.path == ["api", "personslist"]
+  is_operator
 }
 
 # allow {

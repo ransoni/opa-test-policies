@@ -23,10 +23,9 @@ is_operator {
 }
 
 allow {
-  some user
   input.method == "GET"
   input.path = ["api", "persons"]
-  user
+  is_admin
 }
 
 allow {

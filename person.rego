@@ -23,8 +23,10 @@ is_operator {
 }
 
 allow {
+  some user
   input.method == "GET"
   input.path = ["api", "persons"]
+  user
 }
 
 allow {

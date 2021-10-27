@@ -35,10 +35,10 @@ allow {
   is_admin
 }
 
-# allow {
-#   input.method == "GET"
-#   input.path == ["personslist"]
-# }
+allow {
+  input.method == "GET"
+  input.path == ["personslist"]
+}
 
 # allow {
 #   some username

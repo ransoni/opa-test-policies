@@ -17,9 +17,33 @@ is_admin {
   roles[i] == "Admins"
 }
 
+is_operator {
+  some i
+  roles[i] == "Operators"
+}
+
 allow {
   input.method == "GET"
   input.path = ["persons"]
+  is_admin
+}
+
+allow {
+  input.method == "GET"
+  input.path == ["personslist"]
+}
+
+allow {
+  some id
+  input.method == "PATCH"
+  input.path == ["persons", id]
+  is_admin
+}
+
+allow {
+  some id
+  input.method == "DELETE"
+  input.path == ["persons", id]
   is_admin
 }
 

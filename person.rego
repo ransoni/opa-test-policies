@@ -25,25 +25,25 @@ is_admin {
 allow {
   input.method == "GET"
   input.path = ["persons"]
-  is_admin
+#  is_admin
 }
 
 allow {
   input.method == "GET"
-  input.path = ["persons"]
-  is_operator
+  input.path == ["personslist"]
 }
+
+# allow {
+#   input.method == "GET"
+#   input.path = ["persons"]
+#   is_operator
+# }
 
 allow {
   some username
   input.method == "GET"
   input.path = ["persons", username]
   is_admin
-}
-
-allow {
-  input.method == "GET"
-  input.path == ["personslist"]
 }
 
 # allow {

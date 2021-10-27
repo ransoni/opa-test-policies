@@ -25,7 +25,7 @@ is_admin {
 allow {
   input.method == "GET"
   input.path = ["persons"]
-  is_admin
+ # is_admin
 }
 
 allow {

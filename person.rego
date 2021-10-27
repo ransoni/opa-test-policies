@@ -28,7 +28,15 @@ allow {
 
 allow {
   input.method == "PATCH"
-  input.path == ["api", "persons"]
+  input.path[1] == "persons"
+  input.path[2] != null
+  is_admin
+}
+
+allow {
+  input.method == "DELETE"
+  input.path[1] == "persons"
+  input.path[2] != null
   is_admin
 }
 
